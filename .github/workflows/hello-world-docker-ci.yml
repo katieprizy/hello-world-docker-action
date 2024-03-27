@@ -1,0 +1,24 @@
+name: Continuous Integration
+
+on:
+  push:
+    paths: [ action.yml ]
+  workflow_dispatch:
+        
+jobs:
+  test-docker:
+    name: Docker Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
+
+      - name: Run Container Action
+        id: hello-action
+        uses: ./hello-world-docker-action
+        with:
+          who-to-greet: '@katieprizy'
+
+      - name: Print Output
+        id: output
+        run: echo "${{ steps.test-action.outputs.time }}"
