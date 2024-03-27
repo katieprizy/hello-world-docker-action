@@ -2,7 +2,7 @@ name: Continuous Integration
 
 on:
   push:
-    paths: [ action.yml ]
+    paths: [ hello-world-docker-action/action.yml ]
   workflow_dispatch:
         
 jobs:
